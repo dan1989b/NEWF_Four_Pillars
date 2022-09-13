@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dog : Animal //Example of inheritance
 {
+    [SerializeField] private AudioSource BarkCall;
     private string m_displayName;
 
     public string DisplayName //Example of encapsulation
@@ -30,6 +31,10 @@ public class Dog : Animal //Example of inheritance
         Jump();
     }
 
+    public void PlaySound()
+    {
+        BarkCall.Play();
+    }
 
     public override void MakeSound() //Example of polymorphism
     {

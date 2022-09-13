@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Horse : Animal  //Example of inheritance
 {
+    [SerializeField] private AudioSource NeighCall;
     private string m_displayName; //backing field
 
     public string DisplayName //Example of encapsulation
@@ -32,10 +33,9 @@ public class Horse : Animal  //Example of inheritance
         MakeSound(); 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlaySound()
     {
-        
+        NeighCall.Play();
     }
 
     public override void MakeSound() //Example of polymorphism

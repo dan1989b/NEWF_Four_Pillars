@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Chicken : Animal //Example of inheritance
 {
+    [SerializeField] private AudioSource BockCall;
     private string m_displayName;
     //Backing field
     
@@ -31,6 +32,11 @@ public class Chicken : Animal //Example of inheritance
     {
         DisplayName = "Chicken";
         Debug.Log(DisplayName);
+    }
+
+    public void PlaySound()
+    {
+        BockCall.Play();
     }
 
     public override void MakeSound()  //Example of polymorphism
