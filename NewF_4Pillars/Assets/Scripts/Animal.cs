@@ -5,11 +5,14 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
     [SerializeField] private AudioSource Growl;
+    private Rigidbody rb;
+   
+   
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     public void PlayOrigSound()
@@ -19,6 +22,7 @@ public class Animal : MonoBehaviour
 
     public virtual void Jump()
     {
+        rb.AddForce(Vector3.up * 150);
         Debug.Log("Jumped 1 foot");
     }
 

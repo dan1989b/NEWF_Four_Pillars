@@ -7,9 +7,10 @@ public class Chicken : Animal //Example of inheritance
     [SerializeField] private AudioSource BockCall;
     private string m_displayName;
     //Backing field
-    
+    private Rigidbody rb;
 
-   
+
+
     public string DisplayName  //Example of encapsulation
     {
         get { return m_displayName; }
@@ -30,6 +31,7 @@ public class Chicken : Animal //Example of inheritance
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         DisplayName = "Chicken";
         Debug.Log(DisplayName);
     }
@@ -46,6 +48,7 @@ public class Chicken : Animal //Example of inheritance
 
     public override void Jump()
     {
+        rb.AddForce(Vector3.up * 300);
         Debug.Log("Chicken jumped 3 feet!");
     }
 }

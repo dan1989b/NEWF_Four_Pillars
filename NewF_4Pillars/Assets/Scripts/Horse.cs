@@ -5,6 +5,7 @@ using UnityEngine;
 public class Horse : Animal  //Example of inheritance
 {
     [SerializeField] private AudioSource NeighCall;
+    private Rigidbody rb;
     private string m_displayName; //backing field
 
     public string DisplayName //Example of encapsulation
@@ -28,9 +29,11 @@ public class Horse : Animal  //Example of inheritance
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>(); 
         DisplayName = "Horse";
         Debug.Log(DisplayName);
         MakeSound(); 
+        
     }
 
     public void PlaySound()
@@ -41,5 +44,10 @@ public class Horse : Animal  //Example of inheritance
     public override void MakeSound() //Example of polymorphism
     {
         Debug.Log("Horse made a neeeeigh!");
+    }
+
+    public override void Jump()
+    {
+        rb.AddForce(Vector3.up * 500);
     }
 }

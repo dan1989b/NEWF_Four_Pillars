@@ -6,6 +6,7 @@ public class Dog : Animal //Example of inheritance
 {
     [SerializeField] private AudioSource BarkCall;
     private string m_displayName;
+    private Rigidbody rb;
 
     public string DisplayName //Example of encapsulation
     {
@@ -25,6 +26,7 @@ public class Dog : Animal //Example of inheritance
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         DisplayName = "Dog";
         Debug.Log(DisplayName);
         MakeSound();
@@ -36,13 +38,14 @@ public class Dog : Animal //Example of inheritance
         BarkCall.Play();
     }
 
+    public override void Jump()
+    {
+        rb.AddForce(Vector3.up * 200);
+    }
+
     public override void MakeSound() //Example of polymorphism
     {
         Debug.Log("Dog barked!!!");
     }
 
-    public override void Jump()
-    {
-        Debug.Log("Dog jumped 2 feet!");
-    }
 }
